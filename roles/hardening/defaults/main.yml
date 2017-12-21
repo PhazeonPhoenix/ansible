@@ -216,4 +216,25 @@ misc_modules_blacklist:
     - 'thunderbolt'
     - 'usb-midi'
     - 'usb-storage'
+
+# default number of open files soft limit
+default_limit_nofile_soft: 100
+
+# default number of open files hard limit
+default_limit_nofile_hard: 150
+
+# default number of processes soft limit
+default_limit_nproc_soft: 100
+
+# default number of processes hard limit
+default_limit_nproc_hard: 150
+
+# ntp servers for time sync
+ntp: 0.ubuntu.pool.ntp.org 1.ubuntu.pool.ntp.org
+fallback_ntp: 2.ubuntu.pool.ntp.org 3.ubuntu.pool.ntp.org
+
+# dns configuration
+dns: 127.0.0.1
+fallback_dns: 208.67.222.222 208.67.220.220
+dnssec: allow-downgrade
 ...

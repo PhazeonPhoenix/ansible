@@ -24,6 +24,9 @@
 - include_tasks: limits.yml
   tags: limits
 
+- include_tasks: systemd.yml
+  tags: systemd
+
 - include_tasks: login_defs.yml
   tags: login_defs
 

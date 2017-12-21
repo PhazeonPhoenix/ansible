@@ -1,0 +1,118 @@
+---
+- name: systemd system.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/system.conf.j2
+    dest: /etc/systemd/system.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags:
+    - systemd
+    - system.conf
+    - security
+
+- name: systemd user.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/user.conf.j2
+    dest: /etc/systemd/user.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags:
+    - systemd
+    - user.conf
+    - security
+
+- name: systemd journald.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/journald.conf.j2
+    dest: /etc/systemd/journald.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags:
+    - systemd
+    - journald
+    - security
+
+- name: systemd timesyncd.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/timesyncd.conf.j2
+    dest: /etc/systemd/timesyncd.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags:
+    - systemd
+    - timesyncd
+    - security
+
+- name: coredump.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/coredump.conf.j2
+    dest: /etc/systemd/coredump.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+    - coredump.conf
+    - systemd
+    - security
+
+- name: systemd logind.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/logind.conf.j2
+    dest: /etc/systemd/logind.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags:
+    - systemd
+    - logind
+    - security
+
+- name: systemd resolved.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/systemd/resolved.conf.j2
+    dest: /etc/systemd/resolved.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags:
+    - resolved.conf
+    - systemd
+    - security
+...
