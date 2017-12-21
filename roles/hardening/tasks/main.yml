@@ -1,4 +1,9 @@
 ---
+- name: gather facts
+  setup:
+  become: no
+  tags: always
+
 - name: Set OS family dependent variables
   include_vars: '{{ ansible_os_family }}.yml'
   tags: always
@@ -12,6 +17,9 @@
       - '{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml'
       skip: true
   tags: always
+
+- include_tasks: firewall.yml
+  tags: firewall
 
 - include_tasks: limits.yml
   tags: limits
@@ -54,3 +62,4 @@
 - include_tasks: apt.yml
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: apt
+...
