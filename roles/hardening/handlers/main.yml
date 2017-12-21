@@ -3,4 +3,10 @@
   become: yes
   become_method: sudo
   command: systemctl daemon-reload
+
+- name: apt-get clean
+  become: yes
+  become_method: sudo
+  apt:
+    autoclean: yes
 ...

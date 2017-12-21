@@ -18,6 +18,9 @@
       skip: true
   tags: always
 
+- include_tasks: pkgupdate.yml
+  tags: pkgupdate
+
 - include_tasks: firewall.yml
   tags: firewall
 
