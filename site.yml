@@ -10,6 +10,8 @@
     ## for ansible-os-hardening
     # disable password quality checking for now
     os_auth_pam_passwdqc_enable: false
+    # remove more packages
+    os_security_packages_list: ['xinetd', 'inetd', 'ypserv', 'prelink', 'avahi-*', 'rsh*', 'talk*', 'telnet*', 'tftp*', 'yp-tools', 'ypbind']
     firewall_sshd_admin_net: ['10.0.1.1/24', '10.20.20.1/24', '10.30.30.1/24', '10.0.40.1/24']
   roles:
     -
