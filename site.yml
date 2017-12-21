@@ -8,7 +8,9 @@
     # NOT THE SAME AS remote_user or ansible_remote_user as in ansible documentation.
     bootstrap_user: localmike
   roles:
-    - ansible-role-bootstrap
+    -
+        role: ansible-role-bootstrap
+        tags: ['bootstrap']
   #   - ansible-os-hardening
   #   - ansible-ssh-hardening
   #   - hardening
