@@ -1,5 +1,0 @@
----
-packages:
-  - ca-certificates
-  - python-apt
-  - python-simplejson

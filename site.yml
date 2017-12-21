@@ -6,9 +6,9 @@
   vars:
     # used by bootstrap role
     # NOT THE SAME AS remote_user or ansible_remote_user as in ansible documentation.
-    remoteuser: localmike
+    bootstrap_user: localmike
   roles:
-    - bootstrap
+    - ansible-role-bootstrap
   #   - ansible-os-hardening
   #   - ansible-ssh-hardening
   #   - hardening
