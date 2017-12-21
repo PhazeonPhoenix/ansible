@@ -1,14 +1,59 @@
 ---
-- name: install modprobe to disable filesystems | os-10
+- name: install modprobe to disable filesystems
   package:
     name: '{{modprobe_package}}'
     state: 'installed'
 
-- name: disable unused filesystems | os-10
-  template:
-    src: 'modprobe.j2'
-    dest: '/etc/modprobe.d/dev-sec.conf'
-    owner: 'root'
-    group: 'root'
+- name: disablefs.conf
+  become: yes
+  file:
+    state: touch
+    path: /etc/modprobe.d/disablefs.conf
+    owner: root
+    group: root
     mode: '0640'
 
+- name: disable unused filesystems
+  become: yes
+  lineinfile:
+    dest: /etc/modprobe.d/disablefs.conf
+    line: "install {{ item }} /bin/true"
+  with_items:
+    - "{{ fs_modules_blacklist }}"
+
+- name: disablenet.conf
+  become: yes
+  file:
+    state: touch
+    path: /etc/modprobe.d/disablenet.conf
+    owner: root
+    group: root
+    mode: '0640'
+
+- name: disable unused network protocols
+  become: yes
+  lineinfile:
+    dest: /etc/modprobe.d/disablenet.conf
+    line: "install {{ item }} /bin/true"
+  with_items:
+    - "{{ net_modules_blacklist }}"
+
+- name: disablemod.conf
+  become: yes
+  become_method: sudo
+  file:
+    state: touch
+    path: /etc/modprobe.d/disablemod.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: disable misc kernel modules
+  become: yes
+  become_method: sudo
+  lineinfile:
+    dest: /etc/modprobe.d/disablemod.conf
+    line: "install {{ item }} /bin/true"
+  with_items:
+    - "{{ misc_modules_blacklist }}"
+...

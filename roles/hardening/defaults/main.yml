@@ -183,8 +183,11 @@ sysctl_config:
 # at task 'create a combined sysctl-dict if overwrites are defined'
 sysctl_overwrite:
 
+# subnets allowed to connect through firewall to ssh port
+firewall_sshd_admin_net: ['192.168.0.0/24', '192.168.1.0/24']
+
 # disable unused filesystems
-os_unused_filesystems:
+fs_modules_blacklist:
   - "cramfs"
   - "freevxfs"
   - "jffs2"
@@ -194,4 +197,23 @@ os_unused_filesystems:
   - "udf"
   - "vfat"
 
-firewall_sshd_admin_net: ['192.168.0.0/24', '192.168.1.0/24']
+# disable unused network protocols
+net_modules_blacklist:
+    - 'dccp'
+    - 'sctp'
+    - 'rds'
+    - 'tipc'
+
+# disable misc kernel modules
+misc_modules_blacklist:
+    - 'bluetooth'
+    - 'bnep'
+    - 'btusb'
+    - 'firewire-core'
+    - 'n_hdlc'
+    - 'net-pf-31'
+    - 'soundcore'
+    - 'thunderbolt'
+    - 'usb-midi'
+    - 'usb-storage'
+...
