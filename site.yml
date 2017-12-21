@@ -1,0 +1,18 @@
+---
+- name: pes7-ansible
+  hosts: all
+  gather_facts: no
+  become: yes
+  vars:
+    # used by bootstrap role
+    # NOT THE SAME AS remote_user or ansible_remote_user as in ansible documentation.
+    remoteuser: localmike
+  roles:
+    - bootstrap
+  #   - ansible-os-hardening
+  #   - ansible-ssh-hardening
+  #   - hardening
+
+  tasks:
+    - name: test connnection
+      ping:
