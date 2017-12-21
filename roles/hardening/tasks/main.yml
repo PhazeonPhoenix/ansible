@@ -58,6 +58,9 @@
 - include_tasks: rhosts.yml
   tags: rhosts
 
+- include_tasks: logrotate.yml
+  tags: logrotate
+
 - include_tasks: yum.yml
   when: ansible_os_family == 'RedHat'
   tags: yum
