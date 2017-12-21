@@ -7,10 +7,16 @@
     # used by bootstrap role
     # NOT THE SAME AS remote_user or ansible_remote_user as in ansible documentation.
     bootstrap_user: localmike
+    ## for ansible-os-hardening
+    # disable password quality checking for now
+    os_auth_pam_passwdqc_enable: false
   roles:
     -
         role: ansible-role-bootstrap
         tags: ['bootstrap']
+    -
+        role: hardening
+        tags: ['hardening']
   #   - ansible-os-hardening
   #   - ansible-ssh-hardening
   #   - hardening
