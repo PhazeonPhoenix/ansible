@@ -179,6 +179,17 @@ sysctl_config:
   # Virtual memory regions protection | sysctl-32
   kernel.randomize_va_space: 2
 
+  kernel.core_uses_pid: 1
+  kernel.kptr_restrict: 2
+  kernel.panic: 60
+  kernel.panic_on_oops: 60
+  kernel.perf_event_paranoid: 2
+  kernel.yama.ptrace_scope: 1
+  net.ipv4.tcp_max_syn_backlog: 20480
+  net.ipv4.tcp_synack_retries: 2
+  net.ipv4.tcp_syncookies: 1
+  net.ipv4.tcp_syn_retries: 5
+
 # Do not delete the following line or otherwise the playbook will fail
 # at task 'create a combined sysctl-dict if overwrites are defined'
 sysctl_overwrite:
