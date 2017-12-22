@@ -33,6 +33,9 @@
 - include_tasks: login_defs.yml
   tags: login_defs
 
+- include_tasks: adduser.yml
+  tags: adduser
+
 - include_tasks: minimize_access.yml
   tags: minimize_access
 

@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+
+DSHELL=/bin/false
+DHOME=/home
+GROUPHOMES=no
+LETTERHOMES=no
+SKEL=/etc/skel
+FIRST_SYSTEM_UID={{ os_auth_sys_uid_min }}
+LAST_SYSTEM_UID={{ os_auth_sys_uid_max }}
+FIRST_SYSTEM_GID={{ os_auth_sys_gid_min }}
+LAST_SYSTEM_GID={{ os_auth_sys_gid_max }}
+FIRST_UID={{ os_auth_uid_min }}
+LAST_UID=60000
+FIRST_GID={{ os_auth_gid_min }}
+LAST_GID=60000
+USERGROUPS=yes
+USERS_GID=100
+DIR_MODE=0755
+SETGID_HOME=no
+QUOTAUSER=""
+SKEL_IGNORE_REGEX="dpkg-(old|new|dist|save)"
