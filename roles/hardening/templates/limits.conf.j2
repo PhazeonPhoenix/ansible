@@ -1,3 +1,6 @@
 # {{ ansible_managed | comment }}
 # Prevent core dumps for all users. These are usually only needed by developers and may contain sensitive information.
 * hard core 0
+* hard maxlogins 10
+* soft nproc {{ default_limit_nproc_soft }}
+* hard nproc {{ default_limit_nproc_hard }}

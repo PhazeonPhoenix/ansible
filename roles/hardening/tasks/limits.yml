@@ -7,7 +7,6 @@
     group: 'root'
     mode: '0755'
     state: 'directory'
-  when: 'os_security_kernel_enable_core_dump'
 
 - name: create sane limits.conf | sysctl-31a, sysctl-31b
   template:
@@ -16,4 +15,3 @@
     owner: 'root'
     group: 'root'
     mode: '0440'
-  when: 'os_security_kernel_enable_core_dump'
