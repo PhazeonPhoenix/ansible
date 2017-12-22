@@ -6,3 +6,18 @@
     owner: 'root'
     group: 'root'
     mode: '0400'
+
+- name: access.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/security/access.conf.j2
+    dest: /etc/security/access.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+    - access.conf
+    - security
+...
