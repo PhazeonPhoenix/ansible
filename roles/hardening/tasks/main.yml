@@ -58,6 +58,9 @@
 - include_tasks: user_accounts.yml
   tags: user_accounts
 
+- include_tasks: hosts.yml
+  tags: hosts
+
 - include_tasks: rhosts.yml
   tags: rhosts
 
