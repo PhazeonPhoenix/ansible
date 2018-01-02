@@ -85,4 +85,7 @@
 
 - include_tasks: cron.yml
   tags: cron
+
+- include_tasks: ctrlaltdel.yml
+  tags: ctrl-alt-del
 ...
