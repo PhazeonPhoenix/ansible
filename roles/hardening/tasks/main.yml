@@ -82,4 +82,7 @@
   tags:
     - virtualbox
     - vmware
+
+- include_tasks: cron.yml
+  tags: cron
 ...
