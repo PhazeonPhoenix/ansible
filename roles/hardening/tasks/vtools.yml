@@ -1,0 +1,16 @@
+---
+- name: vmware package installation
+  become: yes
+  become_method: sudo
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: no
+  with_items:
+    - open-vm-tools
+  tags:
+    - apt
+    - packages
+    - vmware
+    - security
+...

@@ -77,4 +77,9 @@
 - include_tasks: apt.yml
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: apt
+
+- include_tasks: vtools.yml
+  tags:
+    - virtualbox
+    - vmware
 ...
