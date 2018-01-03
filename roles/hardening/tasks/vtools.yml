@@ -8,6 +8,7 @@
     install_recommends: no
   with_items:
     - open-vm-tools
+  when: ansible_os_family == "Debian"
   tags:
     - apt
     - packages
