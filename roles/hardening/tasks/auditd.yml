@@ -1,0 +1,61 @@
+---
+# CCE-27407-6
+
+- name: debian family install auditd
+  become: yes
+  become_method: sudo
+  apt:
+    name: "auditd"
+    state: latest
+    install_recommends: no
+  when: ansible_os_family == "Debian"
+  tags:
+    - apt
+    - packages
+    - security
+    - auditd
+
+- name: redhat family install auditd
+  become: yes
+  become_method: sud1o
+  yum:
+    name: "audit"
+    state: latest
+  when: ansible_os_family == "RedHat"
+  tags:
+    - yum
+    - packages
+    - security
+
+- name: audit.rules
+  become: yes
+  become_method: sudo
+  template:
+    src: etc/audit/rules.d/hardening.rules.j2
+    dest: /etc/audit/rules.d/hardening.rules
+    backup: yes
+    mode: 0600
+    owner: root
+    group: root
+  notify:
+    - generate auditd
+    - restart auditd
+  tags:
+    - auditd
+    - audit.rules
+    - security
+
+- name: set audit grub cmdline
+  become: yes
+  become_method: sudo
+  lineinfile:
+    regexp: '^GRUB_CMDLINE_LINUX='
+    line: 'GRUB_CMDLINE_LINUX="{{ grub_cmdline }}"'
+    dest: /etc/default/grub
+    state: present
+  when: ansible_os_family == "Debian"
+  tags:
+    - auditd
+    - grub
+    - security
+...

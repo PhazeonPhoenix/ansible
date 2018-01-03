@@ -88,4 +88,7 @@
 
 - include_tasks: ctrlaltdel.yml
   tags: ctrl-alt-del
+
+- include_tasks: auditd.yml
+  tags: auditd
 ...
